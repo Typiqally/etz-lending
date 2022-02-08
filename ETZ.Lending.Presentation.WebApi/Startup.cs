@@ -35,6 +35,7 @@ namespace ETZ.Lending.Presentation.WebApi
             
             services.AddAutoMapper(static config =>
             {
+                config.AddProfile<FileViewModelMappingProfile>();
                 config.AddProfile<ProductViewModelMappingProfile>();
                 config.AddProfile<LentProductViewModelMappingProfile>();
             });

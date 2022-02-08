@@ -17,10 +17,12 @@ namespace ETZ.Lending.Domain.IoC
             // AutoMapper
             services.AddAutoMapper(static config =>
             {
+                config.AddProfile<FileMappingProfile>();
                 config.AddProfile<ProductMappingProfile>();
                 config.AddProfile<LentProductMappingProfile>();
             });
-            
+
+            services.AddScoped<IFileDomainService, FileDomainService>();
             services.AddScoped<IProductDomainService, ProductDomainService>();
             services.AddScoped<ILentProductDomainService, LentProductDomainService>();
             

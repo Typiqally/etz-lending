@@ -17,4 +17,8 @@
       <ProjectReference Include="..\ETZ.Lending.Domain.IoC\ETZ.Lending.Domain.IoC.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Uploads" />
+    </ItemGroup>
+
 </Project>

@@ -20,6 +20,8 @@ namespace ETZ.Lending.Persistence.Contexts
             modelBuilder.ApplyConfiguration(new ProductEntityConfiguration());
         }
         
+        public DbSet<FileManifestEntity> Files { get; set; }
+        
         public DbSet<ProductEntity> Products { get; set; }
         
         public DbSet<LentProductEntity> LentProducts { get; set; }
