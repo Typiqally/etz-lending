@@ -1,0 +1,8 @@
+.form {
+  &-image {
+    object-fit: contain;
+    width: 100%;
+    max-height: 8rem;
+    padding: .75rem 0;
+  }
+}

@@ -1,0 +1,9 @@
+﻿.link {
+  text-decoration: none;
+
+  &:hover, &:focus {
+    color: inherit;
+    transition: all 0.3s;
+  }
+}
+

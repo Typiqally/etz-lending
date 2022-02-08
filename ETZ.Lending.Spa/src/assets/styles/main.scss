@@ -1,0 +1,15 @@
+// Bootstrap
+@import "~bootstrap/scss/bootstrap";
+
+// Local
+@import "base/all";
+@import "themes/all";
+@import "components/all";
+@import "layout/all";
+@import "utils/all";
+@import "vendors/all";
+
+// Font awesome
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import "~@fortawesome/fontawesome-free/scss/solid";

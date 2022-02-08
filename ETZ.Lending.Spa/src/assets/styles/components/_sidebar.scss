@@ -1,0 +1,44 @@
+﻿#sidebar {
+  min-width: 250px;
+  max-width: 250px;
+  min-height: 100vh;
+
+  &.active {
+    margin-left: -250px;
+  }
+}
+
+.sidebar {
+  background: lighten($black, 7%);
+  color: $gray-600;
+
+  &-header {
+    padding: 20px;
+  }
+
+  &.ul.components {
+    padding: 20px 0;
+  }
+
+  &-item {
+    transition: background-color 0.3s;
+
+    &:hover {
+      background: rgba(255, 255, 255, .05);
+    }
+
+    &.active > .sidebar-link,
+    .sidebar-link[aria-expanded="true"] {
+      background: rgba(255, 255, 255, .05);
+      color: $blue;
+    }
+  }
+
+  &-link {
+    text-decoration: none;
+    color: inherit;
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+  }
+}

@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="10.1.1" />
+      <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
+      <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="5.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\ETZ.Lending.Common\ETZ.Lending.Common.csproj" />
+        <ProjectReference Include="..\ETZ.Lending.Domain.Abstractions\ETZ.Lending.Domain.Abstractions.csproj" />
+        <ProjectReference Include="..\ETZ.Lending.Persistence.Abstractions\ETZ.Lending.Persistence.Abstractions.csproj" />
+    </ItemGroup>
+
+</Project>
