@@ -58,6 +58,21 @@ namespace ETZ.Lending.Presentation.WebApi.Controllers
             return CreatedAtAction(nameof(GetLentProduct), new { id = createdViewModel.Id }, createdViewModel);
         }
 
+        [HttpPut("{id:int}")]
+        public async Task<ActionResult<LentProductViewModel>> PutLentProduct(int id, LentProductViewModel lentProduct)
+        {
+            if (id != lentProduct.Id)
+            {
+                return BadRequest(); 
+            }
+
+            LentProduct dto = _mapper.Map<LentProduct>(lentProduct);
+            await _service.UpdateAsync(dto);
+
+            LentProductViewModel viewModel = _mapper.Map<LentProductViewModel>(dto); 
+            return Ok(viewModel); 
+        }
+
         [HttpDelete("{id:int}")]
         public async Task<ActionResult<LentProductViewModel>> DeleteLentProduct(int id)
         {

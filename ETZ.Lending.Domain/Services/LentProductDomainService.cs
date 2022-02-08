@@ -45,6 +45,14 @@ namespace ETZ.Lending.Domain.Services
             return _mapper.Map<LentProduct>(created);
         }
 
+        public async Task UpdateAsync(LentProduct lentProduct)
+        {
+            var entity = _mapper.Map<LentProductEntity>(lentProduct); 
+            
+            _repository.Update(entity);
+            await _repository.SaveChangesAsync(); 
+        }
+
         public async Task DeleteAsync(int id)
         {
             await _repository.DeleteAsync(id);

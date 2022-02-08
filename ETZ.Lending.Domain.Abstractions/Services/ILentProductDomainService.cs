@@ -9,6 +9,7 @@ namespace ETZ.Lending.Domain.Abstractions.Services
         Task<IEnumerable<LentProduct>> GetAllAsync();
         Task<LentProduct> GetByIdAsync(int id);
         Task<LentProduct> LendProductAsync(LentProduct lentProduct);
+        Task UpdateAsync(LentProduct lentProduct);
         Task DeleteAsync(int id);
     }
 }
