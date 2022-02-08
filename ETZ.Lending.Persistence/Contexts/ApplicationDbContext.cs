@@ -21,6 +21,8 @@ namespace ETZ.Lending.Persistence.Contexts
         }
         
         public DbSet<ProductEntity> Products { get; set; }
+        
+        public DbSet<LentProductEntity> LentProducts { get; set; }
 
         public override int SaveChanges()
         {

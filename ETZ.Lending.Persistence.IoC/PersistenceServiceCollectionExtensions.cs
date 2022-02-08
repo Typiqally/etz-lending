@@ -19,6 +19,7 @@ namespace ETZ.Lending.Persistence.IoC
             // Repositories
 
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<ILentProductRepository, LentProductRepository>();
 
             return services;
         }
