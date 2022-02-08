@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using ETZ.Lending.Presentation.WebApi.Validators;
+using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace ETZ.Lending.Presentation.WebApi.ViewModels
@@ -10,6 +10,7 @@ namespace ETZ.Lending.Presentation.WebApi.ViewModels
         public int Id { get; set; }
         
         [BindNever]
+        [NotMapped]
         public int UserId { get; set; }
         
         [Required]
