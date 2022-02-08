@@ -10,7 +10,7 @@ namespace ETZ.Lending.Domain.Services
 {
     public class LentProductDomainService : ILentProductDomainService
     {
-        private static readonly string[] IncludeProperties = { nameof(LentProduct.Product) };
+        private static readonly string[] IncludeProperties = { nameof(LentProduct.Product), nameof(LentProduct.Product.Image) };
 
         private readonly IMapper _mapper;
         private readonly ILentProductRepository _repository;

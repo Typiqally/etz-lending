@@ -21,9 +21,9 @@
       </div>
     </div>
     <div v-else class="text-center">
-      <i class="far fa-frown fa-4x mb-3"></i>
-      <h3 class="mb-3">Geen resultaten</h3>
-      <p>De uitgeleende producten waar je naar zocht konden niet gevonden worden</p>
+      <i class="fas fa-cube fa-4x mb-3"></i>
+      <h3 class="mb-3">Geen uitgeleende producten</h3>
+      <p>Uitgeleende producten worden hier weergegeven</p>
     </div>
   </div>
 </template>
