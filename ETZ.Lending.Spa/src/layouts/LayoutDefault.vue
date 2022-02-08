@@ -12,16 +12,7 @@
           </router-link>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link">Klanten</a>
-        </li>
-        <li class="sidebar-item">
-          <a class="sidebar-link">Abonnementen</a>
-        </li>
-        <li class="sidebar-item">
-          <a class="sidebar-link">Reparaties</a>
-        </li>
-        <li class="sidebar-item">
-          <a class="sidebar-link">Uitloggen</a>
+          <a class="sidebar-link">Uitgeleend</a>
         </li>
       </ul>
     </nav>
