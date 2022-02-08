@@ -7,12 +7,6 @@
     />
     <div class="card-body">
       <h5 class="card-title">{{ product.name }}</h5>
-      <router-link
-        :to="{ name: 'product-details', params: { id: product.id } }"
-        class="card-link"
-      >
-        Aanpassen
-      </router-link>
       <p class="card-text">
         <small class="text-muted">
           Laatst gewijzigd {{ moment(product.updatedAt).calendar() }}

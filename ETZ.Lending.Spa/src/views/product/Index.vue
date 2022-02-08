@@ -16,14 +16,6 @@
               />
             </label>
           </div>
-          <div class="col-auto">
-            <router-link
-              class="btn btn-primary"
-              :to="{ name: 'product-create' }"
-            >
-              Nieuw product
-            </router-link>
-          </div>
         </div>
       </div>
     </div>
@@ -47,9 +39,6 @@
         <i class="fas fa-cube fa-4x mb-3"></i>
         <h3 class="mb-3">Geen producten</h3>
         <p>Nieuwe producten worden hier weergegeven</p>
-        <router-link class="btn btn-primary" :to="{ name: 'product-create' }">
-          Nieuw product
-        </router-link>
       </div>
       <div v-else>
         <i class="far fa-frown fa-4x mb-3"></i>

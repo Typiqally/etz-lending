@@ -6,16 +6,6 @@ const routes = [
     name: "product-index",
     component: () => import("./views/product/Index"),
   },
-  {
-    path: "/product/:id",
-    name: "product-details",
-    component: () => import("./views/product/Details"),
-  },
-  {
-    path: "/product/create",
-    name: "product-create",
-    component: () => import("./views/product/Create"),
-  },
 ];
 
 const router = createRouter({
