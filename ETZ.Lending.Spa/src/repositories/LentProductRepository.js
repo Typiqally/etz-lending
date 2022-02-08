@@ -8,8 +8,8 @@ export default {
   async fetch(id) {
     return Client.get(`${RESOURCE}/${id}`);
   },
-  async lend(payload) {
-    return Client.post(RESOURCE, payload);
+  async lend(productId, expiredAt) {
+    return Client.post(`${RESOURCE}?productId=${productId}&expireDate=${expiredAt}`);
   },
   async delete(id) {
     return Client.delete(`${RESOURCE}/${id}`);

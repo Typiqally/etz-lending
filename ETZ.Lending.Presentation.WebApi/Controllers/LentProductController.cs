@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using ETZ.Lending.Domain.Abstractions.Models;
@@ -44,12 +45,18 @@ namespace ETZ.Lending.Presentation.WebApi.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<LentProductViewModel>> PostLendProduct(LentProductViewModel lentProduct)
+        public async Task<ActionResult<LentProductViewModel>> PostLendProduct(int productId, DateTime expireDate)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+
+            LentProductViewModel lentProduct = new LentProductViewModel
+            {
+                ProductId = productId,
+                ExpiredAt = expireDate
+            };
 
             var dto = _mapper.Map<LentProduct>(lentProduct);
             var created = await _service.LendProductAsync(dto);
@@ -59,12 +66,14 @@ namespace ETZ.Lending.Presentation.WebApi.Controllers
         }
 
         [HttpPut("{id:int}")]
-        public async Task<ActionResult<LentProductViewModel>> PutLentProduct(int id, LentProductViewModel lentProduct)
+        public async Task<ActionResult<LentProductViewModel>> ExtendLentProduct(int id, DateTime newExpireDate)
         {
-            if (id != lentProduct.Id)
+            LentProductViewModel lentProduct = new LentProductViewModel()
             {
-                return BadRequest(); 
-            }
+                Id = id,
+                ExpiredAt = newExpireDate,
+                ProductId = 1
+            };
 
             LentProduct dto = _mapper.Map<LentProduct>(lentProduct);
             await _service.UpdateAsync(dto);

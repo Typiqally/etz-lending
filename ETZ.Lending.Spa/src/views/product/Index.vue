@@ -108,10 +108,7 @@ export default {
       this.isOpen = true;
     },
     async lendProduct() {
-      await LentProductRepository.lend({
-        productId: this.selectedProduct.id,
-        expiredAt: this.expiredAt,
-      })
+      await LentProductRepository.lend(this.selectedProduct.id,this.expiredAt)
         .then(() => {
           this.$router.push({ name: "lent-product-index" });
         })
