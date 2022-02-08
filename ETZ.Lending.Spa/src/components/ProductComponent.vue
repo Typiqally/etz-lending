@@ -1,7 +1,7 @@
 <template>
   <div class="card mb-4">
     <img
-      src="@/assets/product-vr.png"
+      :src="product.image.absoluteUrl"
       class="card-img-top product-image"
       :alt="product.name"
     />

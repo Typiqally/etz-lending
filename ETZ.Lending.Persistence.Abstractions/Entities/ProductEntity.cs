@@ -9,6 +9,11 @@ namespace ETZ.Lending.Persistence.Abstractions.Entities
     {
         [MaxLength(50)]
         public string Name { get; set; }
+        
+        public Guid ImageId { get; set; }
+        
+        [ForeignKey(nameof(ImageId))]
+        public FileManifestEntity Image { get; set; }
 
         public DateTime CreatedAt { get; set; }
 

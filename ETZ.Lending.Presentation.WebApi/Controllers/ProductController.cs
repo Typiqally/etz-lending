@@ -14,11 +14,13 @@ namespace ETZ.Lending.Presentation.WebApi.Controllers
     public class ProductController : Controller
     {
         private readonly IProductDomainService _service;
+        private readonly IFileDomainService _fileService;
         private readonly IMapper _mapper;
 
-        public ProductController(IProductDomainService service, IMapper mapper)
+        public ProductController(IProductDomainService service, IFileDomainService fileService, IMapper mapper)
         {
             _service = service;
+            _fileService = fileService;
             _mapper = mapper;
         }
 
@@ -71,6 +73,11 @@ namespace ETZ.Lending.Presentation.WebApi.Controllers
         [HttpPost]
         public async Task<ActionResult<ProductViewModel>> PostProduct(ProductViewModel product)
         {
+            if (!await _fileService.ValidateFileAsync(product.ImageId, new[] {"image/png", MediaTypeNames.Image.Jpeg}))
+            {
+                ModelState.AddModelError("Image", "Failed to validate the provided image file.");
+            }
+            
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);

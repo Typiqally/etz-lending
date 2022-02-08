@@ -10,7 +10,7 @@ namespace ETZ.Lending.Domain.Services
 {
     public class ProductDomainService : IProductDomainService
     {
-        private static readonly string[] IncludeProperties = System.Array.Empty<string>();
+        private static readonly string[] IncludeProperties = { nameof(Product.Image) };
 
         private readonly IMapper _mapper;
         private readonly IProductRepository _repository;
