@@ -1,5 +1,30 @@
 <template>
   <div id="product">
+    <modal title="Product lenen" id="modal" v-model:is-open="isOpen">
+      <div class="modal-body">
+        <bootstrap-input
+          name="expirationDate"
+          label="Vervaldatum"
+          class="mb-3"
+          type="date"
+          v-model="expiredAt"
+        />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Annuleren
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-dismiss="modal"
+          @click="lendProduct"
+        >
+          Uitlenen
+        </button>
+      </div>
+    </modal>
+
     <div class="row align-items-center justify-content-between pt-5 pb-4">
       <div class="col-auto">
         <h1 class="display-4">Producten</h1>
@@ -31,7 +56,7 @@
         v-for="product in computed"
         :key="product.id"
       >
-        <product :product="product" />
+        <product :product="product" v-on:lend="selectProduct" />
       </div>
     </div>
     <div v-else class="text-center">
@@ -52,12 +77,17 @@
 <script>
 import RepositoryContainer from "@/repositories/RepositoryContainer";
 const ProductRepository = RepositoryContainer.get("products");
+const LentProductRepository = RepositoryContainer.get("lentProducts");
 
 import Product from "@/components/ProductComponent.vue";
+import Modal from "@/components/ModalComponent";
+import BootstrapInput from "@/components/BootstrapInputComponent";
 
 export default {
   name: "ProductIndex",
   components: {
+    BootstrapInput,
+    Modal,
     Product,
   },
   data() {
@@ -67,7 +97,28 @@ export default {
       loading: false,
       query: "",
       searching: false,
+      isOpen: false,
+      selectedProduct: {},
+      expiredAt: "",
     };
+  },
+  methods: {
+    selectProduct(product) {
+      this.selectedProduct = product;
+      this.isOpen = true;
+    },
+    async lendProduct() {
+      await LentProductRepository.lend({
+        productId: this.selectedProduct.id,
+        expiredAt: this.expiredAt,
+      })
+        .then(() => {
+          this.$router.push({ name: "lent-product-index" });
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    },
   },
   async mounted() {
     this.loading = true;
@@ -84,7 +135,7 @@ export default {
   watch: {
     query: async function () {
       if (!this.searching) {
-        await setTimeout(async () => {
+        setTimeout(async () => {
           await ProductRepository.search(this.query)
             .then((response) => {
               this.filtered = response.data;

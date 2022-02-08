@@ -3,14 +3,18 @@
     <img
       src="@/assets/product-vr.png"
       class="card-img-top product-image"
-      :alt="product.name"
+      :alt="lentProduct.product.name"
     />
     <div class="card-body">
-      <h5 class="card-title">{{ product.name }}</h5>
-      <a class="card-link" @click="onLend">Lenen</a>
+      <h5 class="card-title">{{ lentProduct.product.name }}</h5>
       <p class="card-text">
         <small class="text-muted">
-          Laatst gewijzigd {{ moment(product.updatedAt).calendar() }}
+          Geleend {{ moment(lentProduct.createdAt).calendar() }}
+        </small>
+        <br />
+        <small class="text-muted">
+          Vervalt
+          {{ moment(lentProduct.expiredAt).fromNow() }}
         </small>
       </p>
     </div>
@@ -21,14 +25,11 @@
 import moment from "moment";
 
 export default {
-  name: "Product",
+  name: "LentProduct",
   props: {
-    product: null,
+    lentProduct: null,
   },
   methods: {
-    onLend() {
-      this.$emit("lend", this.product);
-    },
     moment(date) {
       moment.locale("nl");
       return moment(date);

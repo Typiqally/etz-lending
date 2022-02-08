@@ -12,7 +12,9 @@
           </router-link>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link">Uitgeleend</a>
+          <router-link class="sidebar-link" :to="{ name: 'lent-product-index' }">
+            Uitgeleend
+          </router-link>
         </li>
       </ul>
     </nav>

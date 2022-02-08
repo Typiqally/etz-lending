@@ -6,6 +6,11 @@ const routes = [
     name: "product-index",
     component: () => import("./views/product/Index"),
   },
+  {
+    path: "/product/lent",
+    name: "lent-product-index",
+    component: () => import("./views/product/lent/Index"),
+  },
 ];
 
 const router = createRouter({
