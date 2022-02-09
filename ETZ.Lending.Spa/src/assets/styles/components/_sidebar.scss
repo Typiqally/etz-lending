@@ -25,11 +25,11 @@
     padding: 10px;
     font-size: 1.1em;
     text-decoration: none;
-    color: $gray-300;
+    color: $gray-600;
     transition: color 0.3s, background-color 0.3s;
 
     &:hover {
-      color: $text-muted;
+      color: $gray-300;
       background: rgba(255, 255, 255, .05);
     }
 
