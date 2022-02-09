@@ -15,6 +15,8 @@ namespace ETZ.Lending.Persistence.Abstractions.Entities
         [ForeignKey(nameof(ImageId))]
         public FileManifestEntity Image { get; set; }
 
+        public bool IsLent { get; set; }
+        
         public DateTime CreatedAt { get; set; }
 
         public DateTime? UpdatedAt { get; set; }

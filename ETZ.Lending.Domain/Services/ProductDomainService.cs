@@ -23,7 +23,11 @@ namespace ETZ.Lending.Domain.Services
 
         public async Task<IEnumerable<Product>> GetAllAsync()
         {
-            var products = await _repository.AllToListAsync(null, IncludeProperties);
+            var products = await _repository.ToListAsync(
+                static product => !product.IsLent,
+                null,
+                IncludeProperties
+            );
 
             return _mapper.Map<IEnumerable<Product>>(products);
         }
