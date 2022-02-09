@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using ETZ.Lending.Domain.Abstractions.Models;
 
@@ -9,7 +10,7 @@ namespace ETZ.Lending.Domain.Abstractions.Services
         Task<IEnumerable<LentProduct>> GetAllAsync();
         Task<LentProduct> GetByIdAsync(int id);
         Task<LentProduct> LendProductAsync(LentProduct lentProduct);
-        Task UpdateAsync(LentProduct lentProduct);
+        Task<LentProduct> UpdateAsync(int id, DateTime expiredAt);
         Task DeleteAsync(int id);
     }
 }

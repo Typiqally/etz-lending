@@ -23,6 +23,7 @@
           {{ moment(lentProduct.expiredAt).fromNow() }}
         </small>
       </p>
+      <a class="card-link" @click="onExtend">Verlengen</a>
     </div>
   </div>
 </template>
@@ -33,13 +34,16 @@ import moment from "moment";
 export default {
   name: "LentProduct",
   props: {
-    lentProduct: null
+    lentProduct: null,
   },
   methods: {
+    onExtend() {
+      this.$emit("extend", this.lentProduct);
+    },
     moment(date) {
       moment.locale("nl");
       return moment(date);
-    }
-  }
+    },
+  },
 };
 </script>

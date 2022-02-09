@@ -30,7 +30,7 @@ namespace ETZ.Lending.Presentation.WebApi.Controllers
             var viewModels = _mapper.Map<IEnumerable<LentProductViewModel>>(products);
             return Ok(viewModels);
         }
-        
+
         [HttpGet("{id:int}")]
         public async Task<ActionResult<LentProductViewModel>> GetLentProduct(int id)
         {
@@ -68,18 +68,9 @@ namespace ETZ.Lending.Presentation.WebApi.Controllers
         [HttpPut("{id:int}")]
         public async Task<ActionResult<LentProductViewModel>> ExtendLentProduct(int id, DateTime newExpireDate)
         {
-            LentProductViewModel lentProduct = new LentProductViewModel()
-            {
-                Id = id,
-                ExpiredAt = newExpireDate,
-                ProductId = 1
-            };
-
-            LentProduct dto = _mapper.Map<LentProduct>(lentProduct);
-            await _service.UpdateAsync(dto);
-
-            LentProductViewModel viewModel = _mapper.Map<LentProductViewModel>(dto); 
-            return Ok(viewModel); 
+            var dto = await _service.UpdateAsync(id, newExpireDate);
+            var viewModel = _mapper.Map<LentProductViewModel>(dto);
+            return Ok(viewModel);
         }
 
         [HttpDelete("{id:int}")]

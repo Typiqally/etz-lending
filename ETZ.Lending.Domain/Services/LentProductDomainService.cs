@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using ETZ.Lending.Domain.Abstractions.Models;
@@ -56,12 +57,15 @@ namespace ETZ.Lending.Domain.Services
             return _mapper.Map<LentProduct>(created);
         }
 
-        public async Task UpdateAsync(LentProduct lentProduct)
+        public async Task<LentProduct> UpdateAsync(int id, DateTime expiredAt)
         {
-            var entity = _mapper.Map<LentProductEntity>(lentProduct);
+            var entity = await _lentProductRepository.FindAsync(id);
+            entity.ExpiredAt = expiredAt;
 
             _lentProductRepository.Update(entity);
             await _lentProductRepository.SaveChangesAsync();
+
+            return _mapper.Map<LentProduct>(entity);
         }
 
         public async Task DeleteAsync(int id)
