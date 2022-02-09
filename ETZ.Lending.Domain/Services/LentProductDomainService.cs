@@ -45,7 +45,7 @@ namespace ETZ.Lending.Domain.Services
             var entity = _mapper.Map<LentProductEntity>(lentProduct);
 
             var created = await _lentProductRepository.CreateAsync(entity);
-            
+
             var affected = await _lentProductRepository.SaveChangesAsync();
             if (affected != 1) return null;
 
@@ -66,8 +66,17 @@ namespace ETZ.Lending.Domain.Services
 
         public async Task DeleteAsync(int id)
         {
-            await _lentProductRepository.DeleteAsync(id);
-            await _lentProductRepository.SaveChangesAsync();
+            var lentProduct = await _lentProductRepository.SingleOrDefaultAsync(p => p.Id == id, IncludeProperties);
+            if (lentProduct == null) return;
+
+            await _lentProductRepository.DeleteAsync(lentProduct.Id);
+
+            var affected = await _lentProductRepository.SaveChangesAsync();
+            if (affected != 1) return;
+
+            lentProduct.Product.IsLent = false;
+            _productRepository.Update(lentProduct.Product);
+            await _productRepository.SaveChangesAsync();
         }
     }
 }
