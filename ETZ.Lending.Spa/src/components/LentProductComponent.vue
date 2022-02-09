@@ -19,7 +19,7 @@
               : 'text-success',
           ]"
         >
-          Vervalt
+          Vervallen
           {{ moment(lentProduct.expiredAt).fromNow() }}
         </small>
       </p>
