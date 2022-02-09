@@ -7,12 +7,12 @@
     />
     <div class="card-body">
       <h5 class="card-title">{{ product.name }}</h5>
-      <a class="card-link" @click="onLend">Lenen</a>
       <p class="card-text">
         <small class="text-muted">
           Laatst gewijzigd {{ moment(product.updatedAt).calendar() }}
         </small>
       </p>
+      <a class="card-link" @click="onLend">Lenen</a>
     </div>
   </div>
 </template>
