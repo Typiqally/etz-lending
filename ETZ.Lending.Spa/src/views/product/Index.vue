@@ -63,7 +63,7 @@
       <div v-if="query.length === 0">
         <i class="fas fa-cube fa-4x mb-3"></i>
         <h3 class="mb-3">Geen producten</h3>
-        <p>Nieuwe producten worden hier weergegeven</p>
+        <p>Beschikbare producten worden hier weergegeven</p>
       </div>
       <div v-else>
         <i class="far fa-frown fa-4x mb-3"></i>
