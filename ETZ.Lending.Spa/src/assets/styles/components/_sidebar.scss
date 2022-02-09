@@ -20,25 +20,22 @@
     padding: 20px 0;
   }
 
-  &-item {
-    transition: background-color 0.3s;
-
-    &:hover {
-      background: rgba(255, 255, 255, .05);
-    }
-
-    &.active > .sidebar-link,
-    .sidebar-link[aria-expanded="true"] {
-      background: rgba(255, 255, 255, .05);
-      color: $blue;
-    }
-  }
-
   &-link {
-    text-decoration: none;
-    color: inherit;
+    display: block;
     padding: 10px;
     font-size: 1.1em;
-    display: block;
+    text-decoration: none;
+    color: $gray-300;
+    transition: color 0.3s, background-color 0.3s;
+
+    &:hover {
+      color: $text-muted;
+      background: rgba(255, 255, 255, .05);
+    }
+
+    &.active {
+      color: $blue;
+      background: rgba(255, 255, 255, .05);
+    }
   }
 }
