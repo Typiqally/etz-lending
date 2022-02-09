@@ -12,7 +12,13 @@
           Geleend {{ moment(lentProduct.createdAt).calendar() }}
         </small>
         <br />
-        <small class="text-muted">
+        <small
+          :class="[
+            moment(lentProduct.expiredAt).isBefore()
+              ? 'text-danger'
+              : 'text-success',
+          ]"
+        >
           Vervalt
           {{ moment(lentProduct.expiredAt).fromNow() }}
         </small>
@@ -27,13 +33,13 @@ import moment from "moment";
 export default {
   name: "LentProduct",
   props: {
-    lentProduct: null,
+    lentProduct: null
   },
   methods: {
     moment(date) {
       moment.locale("nl");
       return moment(date);
-    },
-  },
+    }
+  }
 };
 </script>
